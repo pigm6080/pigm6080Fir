@@ -31,6 +31,7 @@ public class p1 {
 	static void print(ArrayList i_1,ArrayList i_2) {
 		System.out.println(i_1);
 		System.out.println(i_2);
+		System.out.println("¸ğÇØ ~");
 	}
 
 }
