@@ -86,7 +86,7 @@ public class Myshop implements IShop{
 		
 		switch (sel) {
 		case "q": 
-				System.out.println("## 결제가 완료 되었습니다. 종룝랍니다 ##");
+				System.out.println("## 결제가 완료 되었습니다. 종요합니다 ##");
 				System.exit(0);break;
 		case "p": productList();break;
 		default:
