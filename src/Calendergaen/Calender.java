@@ -34,7 +34,7 @@ public class Calender {
 		
 		for (int i = 0; i < cntp; i++) {
 			if(year == p[i].y && month == p[i].m) {
-				System.out.println("************이달에는 일정이 있습니다.************");
+				System.out.println("***************이달에는 일정이 있습니다.***************");
 				cnta = i;
 				t = true;
 			}
@@ -45,36 +45,32 @@ public class Calender {
 		printCal(t);
 	}
 	Plan[] p = new Plan[100];
+	int u=0;
 	void printCal(boolean t) {
-		int o=0;
-		System.out.printf("\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t\n", "월", "화", "수", "목", "금", "토", "일");
-		for (i = 0; i < week+1; i++) {
+		System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\n", "월", "화", "수", "목", "금", "토", "일");
+		for (i = 0; i < week; i++) {
 			System.out.print("\t"); // 1일이 시작하기 전 공백을 위한 반복문.
 		}
 		for (i = 1; i <= monthSet[month - 1]; i++) {
+			boolean l=false; 
+			u++;
+			if(p[cnta].d == u) {
+				l = true;
+			}
+			if(t &&l) {	
+				System.out.printf("%s\t",p[cnta].planN);
+				week++;
+				continue;
+			}
+			
 			System.out.printf("%d\t", i); // i를 입력한 달의 일수만큼 찍음.
 			week++;
+			
 			if (week % 7 == 0) { // 요일이 일요일이 지나면
 				System.out.println(); // 줄을 바꿈.
-				if(t) {
-					System.out.print("일정     :");
-					for (int j= 0; j < i%7; j++) {
-						System.out.print("\t"); // 1일이 시작하기 전 공백을 위한 반복문.
-					}
-					if(p[cnta].d == i) {
-						
-						System.out.println(p[cnta].planN);
-					}
-					
-					
-				}else {
-					System.out.println("일정     :");
-				}
-				
-				System.out.print("\t");
-			}
-				
+			}	
 		}
+		System.out.println();
 	}
 	
 	void add() {
@@ -92,12 +88,50 @@ public class Calender {
 		p[cntp].planN = s.next();
 		System.out.println("추가 완료 되었습니다.");
 		cntp++;
-		Start();
 	}
-	
+	void tot() {
+		System.out.println("모든 일정 출력중..");
+		for(int a=0;a<cntp;a++) {
+			System.out.println("일정 년도:" + p[a].y + " 월: " + p[a].m + " 일 : " + p[a].d + " 그날 일정 :" + p[a].planN);
+		}
+		
+	}
+	void cor() {
+		tot();
+		System.out.println("수정하실 스케줄을 입력해주세요");
+		String cName = s.next();
+		int y = 0;
+		boolean cor = false;
+		for(int a=0;a<cntp;a++) {
+			if(cName.equals(p[a].planN)) {
+				y = a;
+				cor = true;
+			}
+		}
+		if(cor) {
+			System.out.println("몇년도로 변경할까요?");
+			p[y].y = s.nextInt();
+			
+			System.out.println("몇월도로 변경할까요?");
+			p[y].m = s.nextInt();
+			
+			System.out.println("몇일도로 변경할까요?");
+			p[y].d = s.nextInt();
+			
+			System.out.println("변경 완료 되었습니다.");
+				
+		}else {
+			System.out.println("선택하신 일정은 없는 일정입니다.");
+		}
+		
+		
+		
+		
+	}
 	
 }
 class Plan{
 	public int y=0,m=0,d=0;
 	String planN=" ";
+	
 }

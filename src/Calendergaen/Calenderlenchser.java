@@ -7,9 +7,11 @@ public class Calenderlenchser {
 	void Start(){
 		Calender c = new Calender();
 		pwtest();
+		
 		System.out.println("다이어리 프로그램을 시작합니다..");
+		while(true) {
 		System.out.println("메뉴를 선택해 주세요");
-		System.out.println("1) 날짜 보기  2) 새일정 추가 3)모든 일정 모아서 보기");
+		System.out.println("1) 날짜 보기  2) 새일정 추가 3) 모든 일정 모아서 보기  4) 일정 수정하기");
 		int n = s.nextInt();
 		switch (n) {
 		case 1: {
@@ -21,10 +23,15 @@ public class Calenderlenchser {
 			break;
 		}
 		case 3: {
-			
+			c.tot();
+			break;
+		}
+		case 4: {
+			c.cor();
 			break;
 		}
 	}
+}
 }
 	void pwtest() {
 		String id,pw;
