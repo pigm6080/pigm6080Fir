@@ -6,7 +6,9 @@ public class Calender {
 	static int cnta=0;
 	int truearF = 2;
 	int monthSet[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-	
+	int nn = cntp;
+	int num[] = new int[30];
+	int num2 = 0;
 	public Scanner s = new Scanner(System.in);
 	Calender(){}
 	void Start() {
@@ -33,25 +35,23 @@ public class Calender {
 		}
 		week = day % 7;
 		
-		
 		for (int i = 0; i < cntp; i++) {
 			if(year == p[i].y && month == p[i].m) {
-				cnta = i;
+				num[num2] = i;
 				t = true;
-				break;
+				num2++;
 			}
 			
 		}
-		
 		if(t==true)
 			System.out.println("***************이달에는 일정이 있습니다.***************");
-		
 		
 		printCal(t);
 	}
 	Plan[] p = new Plan[100];
 	
 	int lo=0;
+	int t1=0;
 	void printCal(boolean t) {
 		int u=0;
 		System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\n", "월", "화", "수", "목", "금", "토", "일");
@@ -61,24 +61,26 @@ public class Calender {
 		for (i = 1; i <= monthSet[month - 1]; i++) {
 			boolean l=false; 
 			u++;
-			if(truearF>2) {	
-				if(p[cnta].d == u) {
-					System.out.printf("%s\t",p[cnta].planN);
+			if(truearF>2 && t) {	
+				if(p[num[lo]].d == u) {
+					System.out.printf("%s\t",p[num[lo]].planN);
 					l = true;
+					lo++;
 				}
 			}
-			
 			if(t &&l) {	
 				week++;
 				continue;
+			}else {
+				
+				System.out.printf("%d\t", i); // i를 입력한 달의 일수만큼 찍음.
+				week++;
+				
+				if (week % 7 == 0) { // 요일이 일요일이 지나면
+					System.out.println(); // 줄을 바꿈.
+				}	
 			}
 			
-			System.out.printf("%d\t", i); // i를 입력한 달의 일수만큼 찍음.
-			week++;
-			
-			if (week % 7 == 0) { // 요일이 일요일이 지나면
-				System.out.println(); // 줄을 바꿈.
-			}	
 		}
 		System.out.println();
 	}
@@ -97,7 +99,6 @@ public class Calender {
 		cntp++;
 		truearF++;
 		System.out.println("추가 완료 되었습니다.");
-		System.out.println(cnta);
 	}
 	void tot() {
 		System.out.println("모든 일정 출력중..");

@@ -41,6 +41,9 @@ public class Calenderlenchser {
 		ps[1] = s.next();
 		System.out.println("아이디,비밀번호설정이 완료 되었습니다.");
 		while(true) {
+			if(cnt >5) {
+				System.exit(0);
+			}
 			System.out.println("아이디를 입력해주세요 ("+(5-cnt)+"번의기회가 남았습니다.)");
 			id = s.next();
 			if(ps[0].equals(id)) {
@@ -58,9 +61,7 @@ public class Calenderlenchser {
 				cnt++;
 				continue;
 			}
-			if(cnt >5) {
-				System.exit(0);
-			}
+			
 		}
 	}
 
