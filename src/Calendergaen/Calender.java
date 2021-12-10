@@ -4,6 +4,7 @@ public class Calender {
 	int year = 0, month = 0, week = 0, day = 0, i = 0;
 	static int cntp=0;
 	static int cnta=0;
+	int truearF = 2;
 	int monthSet[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	
 	public Scanner s = new Scanner(System.in);
@@ -32,21 +33,27 @@ public class Calender {
 		}
 		week = day % 7;
 		
+		
 		for (int i = 0; i < cntp; i++) {
 			if(year == p[i].y && month == p[i].m) {
-				System.out.println("***************이달에는 일정이 있습니다.***************");
 				cnta = i;
 				t = true;
+				break;
 			}
 			
 		}
+		
+		if(t==true)
+			System.out.println("***************이달에는 일정이 있습니다.***************");
 		
 		
 		printCal(t);
 	}
 	Plan[] p = new Plan[100];
-	int u=0;
+	
+	int lo=0;
 	void printCal(boolean t) {
+		int u=0;
 		System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t\n", "월", "화", "수", "목", "금", "토", "일");
 		for (i = 0; i < week; i++) {
 			System.out.print("\t"); // 1일이 시작하기 전 공백을 위한 반복문.
@@ -54,11 +61,14 @@ public class Calender {
 		for (i = 1; i <= monthSet[month - 1]; i++) {
 			boolean l=false; 
 			u++;
-			if(p[cnta].d == u) {
-				l = true;
+			if(truearF>2) {	
+				if(p[cnta].d == u) {
+					System.out.printf("%s\t",p[cnta].planN);
+					l = true;
+				}
 			}
+			
 			if(t &&l) {	
-				System.out.printf("%s\t",p[cnta].planN);
 				week++;
 				continue;
 			}
@@ -77,8 +87,6 @@ public class Calender {
 		p[cntp] =new Plan();
 		System.out.println("추가하실 년도를 입력해주세요");
 		int a = s.nextInt();
-		System.out.println(cntp);
-		System.out.println(a);
 		p[cntp].y = a;
 		System.out.println("추가하실 월을 입력해주세요");
 		p[cntp].m = s.nextInt();
@@ -86,8 +94,10 @@ public class Calender {
 		p[cntp].d = s.nextInt();
 		System.out.println("그날의 일정을 입력해주세요");
 		p[cntp].planN = s.next();
-		System.out.println("추가 완료 되었습니다.");
 		cntp++;
+		truearF++;
+		System.out.println("추가 완료 되었습니다.");
+		System.out.println(cnta);
 	}
 	void tot() {
 		System.out.println("모든 일정 출력중..");

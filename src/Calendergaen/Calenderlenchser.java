@@ -4,10 +4,10 @@ public class Calenderlenchser {
 	Scanner s = new Scanner(System.in);
 	private String[] ps = new  String[2];
 	static int cnt = 0;
+	Calender c = new Calender();
 	void Start(){
-		Calender c = new Calender();
+	
 		pwtest();
-		
 		System.out.println("다이어리 프로그램을 시작합니다..");
 		while(true) {
 		System.out.println("메뉴를 선택해 주세요");
@@ -35,12 +35,12 @@ public class Calenderlenchser {
 }
 	void pwtest() {
 		String id,pw;
+		System.out.println("첫아이디를 입력해주세요:");
+		ps[0] = s.next();
+		System.out.println("첫 비밀번호를 입력해주세요 :");
+		ps[1] = s.next();
+		System.out.println("아이디,비밀번호설정이 완료 되었습니다.");
 		while(true) {
-			System.out.println("첫아이디를 입력해주세요:");
-			ps[0] = s.next();
-			System.out.println("첫 비밀번호를 입력해주세요 :");
-			ps[1] = s.next();
-			System.out.println("아이디,비밀번호설정이 완료 되었습니다.");
 			System.out.println("아이디를 입력해주세요 ("+(5-cnt)+"번의기회가 남았습니다.)");
 			id = s.next();
 			if(ps[0].equals(id)) {
@@ -53,10 +53,10 @@ public class Calenderlenchser {
 						System.out.println("비밀번호가 틀립니다.");
 						cnt++;
 					}
-				
 			}else {
 				System.out.println("아이디가 틀립니다.");
 				cnt++;
+				continue;
 			}
 			if(cnt >5) {
 				System.exit(0);
