@@ -2,7 +2,7 @@ package Calendergaen;
 import java.util.*;
 public class Calenderlenchser {
 	Scanner s = new Scanner(System.in);
-	private String[] ps = {"aa","1234"};
+	private String[] ps = new  String[2];
 	static int cnt = 0;
 	void Start(){
 		Calender c = new Calender();
@@ -36,6 +36,11 @@ public class Calenderlenchser {
 	void pwtest() {
 		String id,pw;
 		while(true) {
+			System.out.println("첫아이디를 입력해주세요:");
+			ps[0] = s.next();
+			System.out.println("첫 비밀번호를 입력해주세요 :");
+			ps[1] = s.next();
+			System.out.println("아이디,비밀번호설정이 완료 되었습니다.");
 			System.out.println("아이디를 입력해주세요 ("+(5-cnt)+"번의기회가 남았습니다.)");
 			id = s.next();
 			if(ps[0].equals(id)) {
