@@ -99,6 +99,33 @@ public class Calender {
 		cntp++;
 		truearF++;
 		System.out.println("추가 완료 되었습니다.");
+		sort();
+	}
+	void sort() {
+		for(int i = 0; i < cntp; i++) {
+	        for(int j = 0 ; j < cntp - i - 1 ; j++) {
+	        	if(p[j].d > p[j+1].d) {
+	            	
+	            	int temp = p[j+1].y;
+	                p[j+1].y = p[j].y;
+	                p[j].y = temp;
+	                
+	                temp = p[j+1].m;
+	                p[j+1].m = p[j].m;
+	                p[j].m = temp;
+	                
+	                temp = p[j+1].d;
+	                p[j+1].d = p[j].d;
+	                p[j].d = temp;
+	                
+	                String nameTmp = p[j+1].planN;
+	                p[j+1].planN = p[j].planN;
+	                p[j].planN = nameTmp;
+	                
+	            }
+	        }
+		}
+
 	}
 	void tot() {
 		System.out.println("모든 일정 출력중..");
@@ -139,8 +166,9 @@ public class Calender {
 		
 		
 	}
-	
+
 }
+
 class Plan{
 	public int y=0,m=0,d=0;
 	String planN=" ";
