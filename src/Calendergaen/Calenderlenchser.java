@@ -33,7 +33,7 @@ public class Calenderlenchser {
 	}
 }
 }
-	void pwtest() {
+	int pwtest() {
 		String id,pw;
 		System.out.println("첫아이디를 입력해주세요:");
 		ps[0] = s.next();
@@ -47,15 +47,18 @@ public class Calenderlenchser {
 			System.out.println("아이디를 입력해주세요 ("+(5-cnt)+"번의기회가 남았습니다.)");
 			id = s.next();
 			if(ps[0].equals(id)) {
-				System.out.println("비밀번호를 입력해주세요");
-				pw = s.next();
-				if(ps[1].equals(pw)) {
-					System.out.println("로그인 성공");
-					break;
-				}else {
+				while(true) {
+					System.out.println("비밀번호를 입력해주세요("+(5-cnt)+"번의기회가 남았습니다.)");
+					pw = s.next();
+					if(ps[1].equals(pw)) {
+						System.out.println("로그인 성공");
+						return 1;
+					}else {
 						System.out.println("비밀번호가 틀립니다.");
 						cnt++;
 					}
+					
+				}
 			}else {
 				System.out.println("아이디가 틀립니다.");
 				cnt++;
