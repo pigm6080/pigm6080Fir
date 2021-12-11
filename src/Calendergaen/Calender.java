@@ -75,9 +75,8 @@ public class Calender {
 				}	
 				continue;
 			}else {
-				
 				System.out.printf("%d\t", i); // i를 입력한 달의 일수만큼 찍음.
-				week++;
+				week++;	
 				
 				if (week % 7 == 0) { // 요일이 일요일이 지나면
 					System.out.println(); // 줄을 바꿈.
