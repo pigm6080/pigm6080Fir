@@ -70,6 +70,9 @@ public class Calender {
 			}
 			if(t &&l) {	
 				week++;
+				if (week % 7 == 0) { // 요일이 일요일이 지나면
+					System.out.println(); // 줄을 바꿈.
+				}	
 				continue;
 			}else {
 				
