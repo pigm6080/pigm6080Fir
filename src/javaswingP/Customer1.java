@@ -1,4 +1,4 @@
-package javaswingT;
+package javaswingP;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,22 +12,22 @@ import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
 
 
 
-public class Customer {
+public class Customer1 {
 	public static void main(String[] args) {
-		createCustomer("sdfsdf", "123123123", "12", "2342123","Male");
+		createCustomer("asdasd", "750", "1", "750");
 		ArrayList<String> list = getCustomers();
 		for (String item : list) {
 			System.out.println(item);
 		}
 		
 	}
-	public static void createCustomer(String name, String phone,String age,String gender,String note) {
+	public static void createCustomer(String name, String pay,String cnt,String money) {
 		try {
 			Connection con = getconnext();
 			PreparedStatement insert = con.prepareStatement(""
-					+"INSERT INTO customer(name, phone,  age, note, gender) "
+					+"INSERT INTO japangi(name, pay,  cnt, money) "
 					+"VALUE "
-					+"('"+name+"','"+phone+"','"+age+"','"+note+"','"+gender+"')");
+					+"('"+name+"','"+pay+"','"+cnt+"','"+money+"')");
 			insert.executeUpdate();
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -46,18 +46,29 @@ public class Customer {
 			System.out.println(e.getMessage());
 		}
 	}
+	public static void DelTable() {
+		try {
+			Connection con = getconnext();
+			PreparedStatement del = con.prepareStatement("DELETE FROM japangi;");
+			del.execute();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	public static ArrayList<String> getCustomers(){
 		try {
 			Connection con = getconnext();
 			PreparedStatement statemont = con.prepareStatement(""
-					+ "select name, phone, gender From customer"); 
+					+ "select name, pay, cnt From japangi"); 
 			ResultSet results  = statemont.executeQuery();
 			ArrayList<String> list = new ArrayList<String>();
 			while(results.next()) {
 				
 				list.add("Name : " + results.getString("name")+ "  Phone : "+ 
-						results.getString("Phone") +"  gender"+ results.getString("gender"));
+						results.getString("pay") +"  gender"+ results.getString("cnt"));
 				  
 			}
 			System.out.println("The data has benen fached");
@@ -72,21 +83,20 @@ public class Customer {
 		try {
 			Connection con = getconnext();
 			PreparedStatement statemont = con.prepareStatement(""
-					+ "select name, phone, gender,age,note From customer"); 
+					+ "select name, pay, cnt,money From japangi"); 
 			ResultSet results  = statemont.executeQuery();
 			ArrayList<String[]> list = new ArrayList<String[]>();
 			while(results.next()) {
 				list.add(new String[]{
 					results.getString("name"),
-					results.getString("phone"),
-					results.getString("gender"),
-					results.getString("age"),
-					results.getString("note"),
+					results.getString("pay"),
+					results.getString("cnt"),
+					results.getString("money"),
 				});
 				
 			}
 			System.out.println("The daa has been fatched");
-			String[][] arr = new String[list.size()][5];
+			String[][] arr = new String[list.size()][4];
 			
 			return list.toArray(arr);
 		} catch (Exception e) {
@@ -101,11 +111,11 @@ public class Customer {
 			Connection con = getconnext();
 			PreparedStatement create = con.prepareStatement(
 					"CREATE TABLE IF NOT EXISTS "
-					+ "customer(id int NOT NULL AUTO_INCREMENT,"
+					+ "japangi(id int NOT NULL AUTO_INCREMENT,"
 					+ "name varChar(255),"	
-					+ "phone varChar(255),"
-					+ "age varChar(255),"
-					+ "note varChar(255),"
+					+ "pay varChar(255),"
+					+ "cnt varChar(255),"
+					+ "money varChar(255),"
 					+ "PRIMARY KEY(id))");
 			create.execute();
 			System.out.println("Good");
