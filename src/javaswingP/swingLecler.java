@@ -78,6 +78,7 @@ public class swingLecler extends Thread{
 	private JTextField txt4;
 	private JTextField txt5;
 	private JTable table;
+	String[][] data = Customer1.getCustomersTable();
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 978, 454);
@@ -206,11 +207,11 @@ public class swingLecler extends Thread{
 				});
 				btnNewButton_6_4.setBounds(92, 298, 105, 24);
 				superpanel.add(btnNewButton_6_4);
-				Customer1 customer1 = new Customer1();
-				String[] headers = new String [] {"name","pay","cnt","money"};
-				String[][] data = customer1.getCustomersTable();
-				JTable table = new JTable(data,headers);
-				
+													Customer1 customer1 = new Customer1();
+													String[] headers = new String [] {"name","pay","cnt","money"};
+													
+													JTable table = new JTable(data,headers);
+													
 																	JButton btnNewButton_7 = new JButton("뒤로가기");
 																	btnNewButton_7.addActionListener(new ActionListener() {
 																		public void actionPerformed(ActionEvent e) {
@@ -679,21 +680,23 @@ public class swingLecler extends Thread{
 								String id = "park";
 								String pw = "1234";
 								
-								if(id.equals(textField.getText()) && Arrays.equals(passwordField.getPassword(),"1234".toCharArray())){
-									JOptionPane.showMessageDialog(null, "로그인 성공");
-									
-									txt1.setText(Integer.toString(wt.cnt));
-									txt2.setText(Integer.toString(lcof.cnt));
-									txt3.setText(Integer.toString(dri.cnt));
-									txt4.setText(Integer.toString(cof.cnt));
-									txt5.setText(Integer.toString(tas.cnt));
-									MainPanel.setVisible(false);
-									superpanel.setVisible(true);
-									LoginPanel.setVisible(false);
-								} else {
-									JOptionPane.showMessageDialog(null,	 "로그인 실패");
-								}
-								
+																			if(id.equals(textField.getText()) && Arrays.equals(passwordField.getPassword(),"1234".toCharArray())){
+																				JOptionPane.showMessageDialog(null, "로그인 성공");
+																				
+																				txt1.setText(Integer.toString(wt.cnt));
+																				txt2.setText(Integer.toString(lcof.cnt));
+																				txt3.setText(Integer.toString(dri.cnt));
+																				txt4.setText(Integer.toString(cof.cnt));
+																				txt5.setText(Integer.toString(tas.cnt));
+																				MainPanel.setVisible(false);
+																				superpanel.setVisible(true);
+																				LoginPanel.setVisible(false);
+																				data = customer1.getCustomersTable();
+																				
+																			} else {
+																				JOptionPane.showMessageDialog(null,	 "로그인 실패");
+																			}
+																			
 							}
 							
 						});
