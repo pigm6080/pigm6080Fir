@@ -207,16 +207,16 @@ public class swingLecler extends Thread{
 				});
 				btnNewButton_6_4.setBounds(92, 298, 105, 24);
 				superpanel.add(btnNewButton_6_4);
-													Customer1 customer1 = new Customer1();
-													String[] headers = new String [] {"name","pay","cnt","money"};
+				Customer1 customer1 = new Customer1();
+				String[] headers = new String [] {"name","pay","cnt","money"};
 													
-													JTable table = new JTable(data,headers);
+				JTable table = new JTable(data,headers);
 													
-																	JButton btnNewButton_7 = new JButton("뒤로가기");
-																	btnNewButton_7.addActionListener(new ActionListener() {
-																		public void actionPerformed(ActionEvent e) {
-																			superpanel.setVisible(false);
-																			MainPanel.setVisible(true);
+				JButton btnNewButton_7 = new JButton("뒤로가기");
+				btnNewButton_7.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				superpanel.setVisible(false);
+				MainPanel.setVisible(true);
 																		}
 																	});
 				btnNewButton_7.setBounds(22, 19, 97, 23);
@@ -297,20 +297,20 @@ public class swingLecler extends Thread{
 			txtTansan.setBounds(415, 22, 85, 35);
 			MainPanel.add(txtTansan);
 			
-										JButton btnDri = new JButton("550 원");
+			JButton btnDri = new JButton("550 원");
 										
-												btnDri.addActionListener(new ActionListener() {
-													public void actionPerformed(ActionEvent e) {
-														if(mymoney >= 550 && dri.cnt >0) {
-															mymoney -= 550;
-															monwytot += 550;
-															txtMoney.setText(Integer.toString(mymoney));
-															dri.cnt--;
-															txtDrink.setText(Integer.toString(dri.cnt));
-															String motot = Integer.toString(monwytot);
-															Customer1.createCustomer("IonDrink", "550", "1", motot);
-														}else {
-															JOptionPane.showMessageDialog(null, "잔액이 부족합니다");
+			btnDri.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if(mymoney >= 550 && dri.cnt >0) {
+						mymoney -= 550;
+						monwytot += 550;
+						txtMoney.setText(Integer.toString(mymoney));
+						dri.cnt--;
+						txtDrink.setText(Integer.toString(dri.cnt));
+						String motot = Integer.toString(monwytot);
+						Customer1.createCustomer("IonDrink", "550", "1", motot);
+					}else {
+					    JOptionPane.showMessageDialog(null, "잔액이 부족합니다");
 														}
 														isTrue();
 													}
@@ -680,21 +680,21 @@ public class swingLecler extends Thread{
 								String id = "park";
 								String pw = "1234";
 								
-																			if(id.equals(textField.getText()) && Arrays.equals(passwordField.getPassword(),"1234".toCharArray())){
-																				JOptionPane.showMessageDialog(null, "로그인 성공");
+							if(id.equals(textField.getText()) && Arrays.equals(passwordField.getPassword(),"1234".toCharArray())){
+								JOptionPane.showMessageDialog(null, "로그인 성공");
 																				
-																				txt1.setText(Integer.toString(wt.cnt));
-																				txt2.setText(Integer.toString(lcof.cnt));
-																				txt3.setText(Integer.toString(dri.cnt));
-																				txt4.setText(Integer.toString(cof.cnt));
-																				txt5.setText(Integer.toString(tas.cnt));
-																				MainPanel.setVisible(false);
-																				superpanel.setVisible(true);
-																				LoginPanel.setVisible(false);
-																				data = customer1.getCustomersTable();
+								txt1.setText(Integer.toString(wt.cnt));
+								txt2.setText(Integer.toString(lcof.cnt));
+								txt3.setText(Integer.toString(dri.cnt));
+								txt4.setText(Integer.toString(cof.cnt));
+								txt5.setText(Integer.toString(tas.cnt));
+								MainPanel.setVisible(false);
+								superpanel.setVisible(true);
+								LoginPanel.setVisible(false);
+								data = customer1.getCustomersTable();
 																				
-																			} else {
-																				JOptionPane.showMessageDialog(null,	 "로그인 실패");
+							} else {
+												JOptionPane.showMessageDialog(null,	 "로그인 실패");
 																			}
 																			
 							}
