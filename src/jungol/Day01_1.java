@@ -9,7 +9,6 @@ public class Day01_1 {
 		a[2]=3;
 		for (int i : a) {
 			System.out.println(i);
-			System.out.println();
 		}
 		
 	
