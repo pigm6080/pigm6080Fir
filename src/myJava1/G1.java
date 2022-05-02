@@ -11,8 +11,9 @@ class G1 {
 		for(Integer key:HM.keySet()) {
 			keys.add(key);
 		}
-				
-		System.out.println("¾È³ç");
+		System.out.println("ï¿½È³ï¿½");
+		
+		
+		
 	}
-	
 }
