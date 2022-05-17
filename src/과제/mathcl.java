@@ -1,4 +1,4 @@
-package Kimhywoo;
+package 과제;
 
 import java.util.Scanner;
 

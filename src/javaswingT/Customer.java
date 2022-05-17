@@ -119,9 +119,9 @@ public class Customer {
 	public static Connection getconnext() {
 		try {
 			String diver = "com.mysql.cj.jdbc.Driver";
-			String url = "jdbc:mysql://sql5.freemysqlhosting.net:3306/sql5458013";
-			String user = "sql5458013";
-			String pass = "9C5gDnkyZb";
+			String url = "jdbc:mysql://sql5.freemysqlhosting.net:0000/sq11111111";
+			String user = "sql1111111";
+			String pass = "1111111111";
 			Class.forName(diver);
 			Connection con = DriverManager.getConnection(url,user,pass);
 			System.out.println("The connection Successful");
